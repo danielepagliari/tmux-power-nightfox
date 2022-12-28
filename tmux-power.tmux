@@ -34,49 +34,19 @@ prefix_highlight_pos=$(tmux_get @tmux_power_prefix_highlight_pos)
 time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
 # short for Theme-Colour
-TC=$(tmux_get '@tmux_power_theme' 'gold')
-case $TC in
-    'gold' )
-        TC='#ffb86c'
-        ;;
-    'redwine' )
-        TC='#b34a47'
-        ;;
-    'moon' )
-        TC='#00abab'
-        ;;
-    'forest' )
-        TC='#228b22'
-        ;;
-    'violet' )
-        TC='#9370db'
-        ;;
-    'snow' )
-        TC='#fffafa'
-        ;;
-    'coral' )
-        TC='#ff7f50'
-        ;;
-    'sky' )
-        TC='#87ceeb'
-        ;;
-    'default' ) # Useful when your term changes colour dynamically (e.g. pywal)
-        TC='colour3'
-        ;;
-esac
-
+TC=#719cd6
 G01=#080808 #232
 G02=#121212 #233
 G03=#1c1c1c #234
-G04=#262626 #235
+G04=#131a24 #235
 G05=#303030 #236
-G06=#3a3a3a #237
+G06=#334057 #237
 G07=#444444 #238
 G08=#4e4e4e #239
 G09=#585858 #240
-G10=#626262 #241
+G10=#aeafb0 #241
 G11=#6c6c6c #242
-G12=#767676 #243
+G12=#d6d6d7 #243
 
 FG="$G10"
 BG="$G04"
@@ -104,7 +74,7 @@ tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "G12"
 tmux_set status-left-length 150
 user=$(whoami)
-LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon#[fg=$TC,bg=$G06] $session_icon #S "
+LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon#[fg=$G12,bg=$G06] $session_icon #S "
 if "$show_upload_speed"; then
     LS="$LS#[fg=$G06,bg=$G05]$right_arrow_icon#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$right_arrow_icon"
 else
@@ -119,7 +89,7 @@ tmux_set status-left "$LS"
 tmux_set status-right-bg "$BG"
 tmux_set status-right-fg "G12"
 tmux_set status-right-length 150
-RS="#[fg=$G06]$left_arrow_icon#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$left_arrow_icon#[fg=$G04,bg=$TC] $date_icon $date_format "
+RS="#[fg=$G06]$left_arrow_icon#[fg=$G12,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$left_arrow_icon#[fg=$G04,bg=$TC] $date_icon $date_format "
 if "$show_download_speed"; then
     RS="#[fg=$G05,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
 fi
@@ -133,7 +103,7 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
+tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$G12,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
